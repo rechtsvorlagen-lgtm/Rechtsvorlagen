@@ -1,0 +1,224 @@
+/* styles.css — Minimalistisches, mobil-zuerst Design */
+/* Farbvariablen */
+:root{
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --accent: #2B6CB0; /* gewünschte Akzentfarbe */
+  --radius: 12px;
+  --card-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  --max-width: 980px;
+  --container-pad: 20px;
+  --glass: rgba(43,108,176,0.06);
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Container */
+.container{
+  width:100%;
+  max-width:var(--max-width);
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:var(--container-pad);
+  padding-right:var(--container-pad);
+}
+
+/* Accessibility: skip link */
+.skip-link{
+  position: absolute;
+  left:-9999px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.skip-link:focus{
+  left:10px;
+  top:10px;
+  width:auto;
+  height:auto;
+  padding:8px 12px;
+  background:#111827;
+  color:#fff;
+  z-index:1000;
+  border-radius:6px;
+}
+
+/* Header */
+.site-header{
+  border-bottom:1px solid #eef2f7;
+  background:linear-gradient(0deg, rgba(255,255,255,1), rgba(255,255,255,0.9));
+  position:sticky;
+  top:0;
+  backdrop-filter: blur(6px);
+  z-index:50;
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 0;
+}
+.brand-title{
+  font-size:16px;
+  margin:0;
+  letter-spacing:0.2px;
+}
+.brand-sub{
+  margin:2px 0 0 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* Navigation */
+.nav{display:flex;gap:12px;align-items:center}
+.nav-link{font-size:14px;color:var(--muted);text-decoration:none;padding:8px;border-radius:8px}
+.nav-link:hover{color:var(--accent);background:var(--glass)}
+.cta{background:transparent;border:1px solid var(--accent);color:var(--accent);padding:8px 10px}
+
+/* Hero */
+.hero{
+  padding:28px 0;
+}
+.hero-card{
+  background:linear-gradient(180deg, rgba(255,255,255,1), rgba(249,250,252,1));
+  border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.hero-title{
+  margin:0;
+  font-size:22px;
+  letter-spacing:-0.4px;
+}
+.hero-lead{margin:0;color:var(--muted)}
+.hero-sub{margin:0;color:var(--muted);font-size:14px}
+
+.hero-actions{display:flex;gap:10px;margin-top:6px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border-radius:10px;
+  padding:10px 14px;
+  text-decoration:none;
+  font-weight:600;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(11,15,35,0.06)}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(43,108,176,0.12)}
+
+/* Info */
+.info{padding:20px 0}
+.info h3{margin:4px 0 8px 0}
+.who ul{margin:8px 0 0 18px;color:var(--muted)}
+
+/* Angebote / Cards */
+.angebote{padding:10px 0}
+.cards{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  list-style:none;
+  padding:0;
+  margin:12px 0 0 0;
+}
+.card{
+  border-radius:10px;
+  padding:12px;
+  background:linear-gradient(180deg, #fff, #fbfdff);
+  box-shadow:var(--card-shadow);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(16,24,40,0.08)}
+.card h4{margin:0 0 6px 0}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.emph{color:var(--accent)}
+
+/* Zahlung / Tabs */
+.zahlung{padding:10px 0}
+.tabs{display:flex;gap:8px;margin-top:8px}
+.tab{
+  padding:10px 12px;
+  border-radius:10px;
+  background:transparent;
+  border:1px solid #edf2f7;
+  cursor:pointer;
+  transition:background .12s ease, border-color .12s ease;
+}
+.tab[aria-selected="true"], .tab.active { background:var(--glass); border-color:rgba(43,108,176,0.14) }
+.tab:focus{outline:3px solid rgba(43,108,176,0.12);outline-offset:2px}
+
+/* Panels */
+.tab-panels{margin-top:12px}
+.panel{padding:14px;border-radius:10px;background:#fff;box-shadow:var(--card-shadow)}
+.panel[hidden]{display:none}
+.payment-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.qr{display:flex;align-items:center;justify-content:center}
+.qr svg{border-radius:8px;box-shadow:0 6px 18px rgba(43,108,176,0.06)}
+
+/* Bank details */
+.bank-details{background:#fbfdff;padding:10px;border-radius:8px;border:1px solid #eef6ff;max-width:480px}
+
+/* Kontaktformular */
+.kontakt{padding:10px 0}
+.contact-form{
+  display:flex;flex-direction:column;gap:10px;
+  max-width:720px;
+}
+.contact-form label{font-weight:600;font-size:13px}
+.contact-form input,
+.contact-form textarea{
+  border:1px solid #e6eef9;
+  padding:10px;border-radius:8px;
+  font-size:15px;
+  transition:box-shadow .12s ease, border-color .12s ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 6px 18px rgba(43,108,176,0.06);
+}
+
+/* Disclaimer */
+.disclaimer{margin:18px 0;padding:14px;background:linear-gradient(90deg, rgba(255,255,255,1), rgba(249,250,252,1));border-radius:10px;border-left:4px solid var(--accent)}
+.disclaimer-text{margin:0;font-weight:600}
+.small.muted{color:var(--muted)}
+
+/* Footer */
+.site-footer{border-top:1px solid #eef2f7;padding:22px 0;margin-top:36px}
+.footer-inner{display:flex;flex-direction:column;gap:12px}
+.footer-right{display:flex;gap:10px}
+.footer-link{color:var(--muted);text-decoration:none;font-size:14px}
+
+/* Responsive: ab Tablet */
+@media(min-width:720px){
+  .header-inner{padding:18px 0}
+  .hero-card{flex-direction:row;align-items:center;justify-content:space-between;padding:28px}
+  .hero-title{font-size:28px}
+  .cards{grid-template-columns:repeat(2, 1fr)}
+  .payment-grid{grid-template-columns: 220px 1fr; align-items:center}
+  .footer-inner{flex-direction:row;justify-content:space-between;align-items:center}
+}
